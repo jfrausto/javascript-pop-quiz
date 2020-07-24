@@ -1,0 +1,57 @@
+body {
+  background-color: white;
+  /* margin: 0.5rem; */
+  font-family: "Courier New", Courier, monospace;
+}
+header,
+main,
+footer {
+  background-color: white;
+}
+.button {
+  position: absolute;
+}
+#start-button {
+  display: block;
+  width: 50%;
+  height: 25%;
+  /* border: black; */
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+  background-color: white;
+  /* box-shadow: 0 5px 0 dodgerblue; 
+  */
+  /* GOT IDEA FROM STACK OVERFLOW BUTTON ANIMATION */
+  box-shadow: 0px 5px 0px dodgerblue;
+  position: relative;
+  top: 0px;
+  transition: all ease 0.1s;
+}
+#start-button:hover {
+  cursor: pointer;
+}
+#start-button:focus {
+  outline: none;
+}
+#start-button:active {
+  /* box-shadow: 0 1px 0 dodgerblue; */
+  box-shadow: 0px 1px 5px dodgerblue;
+  /* top: 3px; */
+  transform: translateY(3px);
+}
+#custom-timer {
+  background-color: white;
+  border: 2px solid black;
+}
+#custom-score {
+  background-color: white;
+  border: 2px solid black;
+}
+#custom-header {
+  display: block;
+  background-color: white;
+  border: 2px solid black;
+  text-align: center;
+  box-shadow: 0px 5px 0px dodgerblue;
+}

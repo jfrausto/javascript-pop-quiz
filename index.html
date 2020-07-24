@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>!Pop Quiz!</title>
+  </head>
+  <body>
+    <header class="container-fluid mb-2 mt-2 p-2">
+      <div class="row mx-auto">
+        <!-- this div can hold the timer -->
+        <div class="col my-auto mr-1 rounded" id="custom-timer">
+          Time:
+        </div>
+        <!-- this div can hold the starting header -->
+        <div class="col-sm-8 my-auto mx-auto rounded" id="custom-header">
+          Test your JavaScript knowledge
+        </div>
+        <!-- this div can hold the score -->
+        <div class="col my-auto mr-1 rounded" id="custom-score">
+          Score:
+        </div>
+      </div>
+    </header>
+
+    <main class="container-fluid mb-2 mt-2 p-2">
+      <div class="row mx-auto rounded">
+        <div class="col my-auto rounded">
+          <!-- <form action="">
+            <input type="button" class="jumbotron jumbotron-fluid" />
+          </form> -->
+          <button
+            class="rounded mx-auto button"
+            id="start-button"
+            type="button"
+          >
+            LETS BEGIN
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
