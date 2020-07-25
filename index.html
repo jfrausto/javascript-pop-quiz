@@ -14,10 +14,11 @@
     <title>!Pop Quiz!</title>
   </head>
   <body>
+    <!-- top of page; header -->
     <header class="container-fluid mb-2 mt-2 p-2">
       <div class="row mx-auto">
         <!-- this div can hold the timer -->
-        <div class="col my-auto mr-1 rounded" id="custom-timer">
+        <div class="col my-auto mr-1 rounded custom-border" id="custom-timer">
           Time:
         </div>
         <!-- this div can hold the starting header -->
@@ -25,19 +26,21 @@
           <h1>Test your JavaScript knowledge</h1>
         </div>
         <!-- this div can hold the score -->
-        <div class="col my-auto mr-1 rounded" id="custom-score">
+        <div class="col my-auto mr-1 rounded custom-border" id="custom-score">
           Score:
         </div>
       </div>
     </header>
 
+    <!-- middle main of page -->
     <main>
       <div class="container-fluid mb-2 mt-2 p-2">
         <!-- THIS ROW HOLDS THE START BUTTON -->
+        <!-- will hide upon starting the quiz -->
         <div class="row mx-auto rounded">
           <div class="col my-auto rounded">
             <button
-              class="rounded mx-auto button"
+              class="rounded mx-auto custom-border button"
               id="start-button"
               type="button"
             >
@@ -52,7 +55,9 @@
       <div class="container mt-2 p-2" id="question-display">
         <div class="row mx-auto rounded">
           <div class="col my-auto rounded">
-            <h2 id="quiz-question">HOW CAN SHE SLAP?</h2>
+            <h2 class="rounded mx-auto" id="quiz-question">
+              HOW CAN SHE SLAP?
+            </h2>
           </div>
         </div>
         <!-- 4 rows of answer choices -->

@@ -40,14 +40,22 @@ footer {
   /* top: 3px; */
   transform: translateY(3px);
 }
-#custom-timer {
+
+/* MIGHT MAKE A CLASS TO HANDLE BORDERS WITH STYLE */
+
+.custom-border {
+  background-color: white;
+  border: 2px solid black;
+}
+
+/* #custom-timer {
   background-color: white;
   border: 2px solid black;
 }
 #custom-score {
   background-color: white;
   border: 2px solid black;
-}
+} */
 #custom-header {
   display: block;
   background-color: white;
