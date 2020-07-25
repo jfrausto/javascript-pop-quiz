@@ -13,6 +13,7 @@ var answerFour = document.querySelector("#answer4");
 var currentTime = 60; //    start with a minute on the clock
 var score = 0;
 var currentQuestion = 0; // keep adding to it to access others in the quiz Index
+// var thisAnswer; event.target for chosen answer
 
 var dataTypeQ = {
   question: "Which of the following data types is NOT supported in JavaScript?",
@@ -62,10 +63,22 @@ function setTime() {
       clearInterval(timerInterval);
       // "YOU LOSE" FUNCTION,CONDITION,OR ACTION HERE
     }
+    if (currentTime <= 10) {
+      timerDisplay.setAttribute("style", "box-shadow: 0px 5px 0px red");
+    }
   }, 1000);
 }
 
+// populates the question and answer fields
 function renderQuestion() {
+  // reset all of the stylings from right/wrong answers and displays
+  answerOne.removeAttribute("style");
+  answerTwo.removeAttribute("style");
+  answerThree.removeAttribute("style");
+  answerFour.removeAttribute("style");
+  scoreDisplay.removeAttribute("style");
+  timerDisplay.removeAttribute("style");
+  //   populate next question and its answer choices
   quizQuestion.textContent = quizQuestionsArray[currentQuestion].question;
   answerOne.textContent = quizQuestionsArray[currentQuestion].answers[0];
   answerTwo.textContent = quizQuestionsArray[currentQuestion].answers[1];
@@ -73,4 +86,35 @@ function renderQuestion() {
   answerFour.textContent = quizQuestionsArray[currentQuestion].answers[3];
 }
 
-startButton.addEventListener("click", startQuiz);
+function verifyResponse(event) {
+  var thisAnswer = event.target;
+  var timeOutId = 0;
+
+  if (
+    // correct choice!
+    thisAnswer.textContent === quizQuestionsArray[currentQuestion].correctAnswer
+  ) {
+    thisAnswer.setAttribute(
+      "style",
+      "background-color: lightgreen; color:black"
+    );
+    score = score + 300;
+    currentQuestion++; // go to next question
+    scoreDisplay.textContent = "Score: " + score;
+    scoreDisplay.setAttribute("style", "box-shadow: 0px 5px 0px lightgreen");
+    timeOutID = window.setTimeout(renderQuestion, 600);
+  } else {
+    // wrong choice!
+    thisAnswer.setAttribute("style", "background-color: red; color:black");
+    timerDisplay.setAttribute("style", "box-shadow: 0px 5px 0px yellow");
+    currentTime = currentTime - 7; // penalty, you got it wrong!
+    currentQuestion++;
+    timeOutID = window.setTimeout(renderQuestion, 600);
+  }
+}
+
+startButton.addEventListener("mouseup", startQuiz);
+answerOne.addEventListener("click", verifyResponse);
+answerTwo.addEventListener("click", verifyResponse);
+answerThree.addEventListener("click", verifyResponse);
+answerFour.addEventListener("click", verifyResponse);
