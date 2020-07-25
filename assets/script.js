@@ -23,15 +23,29 @@ questionDisplay.hidden = true;
 // scoreDisplay.hidden = false; //  hide score and timer areas
 // timerDisplay.hidden = false;
 // questionDisplay.hidden = false;
-function startQuiz() {
+function startQuiz(event) {
+  event.preventDefault(); // maybe not work because of event passing
   titleDisplay.hidden = true;
   startButton.hidden = true;
   score = 0;
   questionDisplay.hidden = false;
   scoreDisplay.textContent = "Score: " + score;
   scoreDisplay.hidden = false;
-
   timerDisplay.hidden = false; // could be put in function instead
+
+  setTime();
+}
+
+function setTime() {
+  var timerInterval = setInterval(function () {
+    currentTime--;
+    timerDisplay.textContent = "Time: " + currentTime;
+
+    if (currentTime <= 0) {
+      clearInterval(timerInterval);
+      // "YOU LOSE" FUNCTION,CONDITION,OR ACTION HERE
+    }
+  }, 1000);
 }
 
 startButton.addEventListener("click", startQuiz);
