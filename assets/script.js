@@ -28,8 +28,10 @@ function startQuiz() {
   startButton.hidden = true;
   score = 0;
   questionDisplay.hidden = false;
+  scoreDisplay.textContent = "Score: " + score;
   scoreDisplay.hidden = false;
-  // timerDisplay.hidden = false; // could be put in function instead
+
+  timerDisplay.hidden = false; // could be put in function instead
 }
 
 startButton.addEventListener("click", startQuiz);
