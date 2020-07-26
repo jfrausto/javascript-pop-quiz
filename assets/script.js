@@ -11,6 +11,8 @@ var answerThree = document.querySelector("#answer3");
 var answerFour = document.querySelector("#answer4");
 var gameOverDisplay = document.querySelector("#game-over");
 var gameOverOverlay = document.querySelector("#overlay-background");
+var gameOverScore = document.querySelector("#game-over-score");
+
 gameOverDisplay.hidden = true;
 gameOverOverlay.hidden = true;
 
@@ -159,6 +161,7 @@ function gameOver() {
   gameOverOverlay.hidden = false; // display overlay and game over screen
   gameOverDisplay.hidden = false;
   clearInterval(timerInterval); // freeze time
+  gameOverScore.textContent = "Game Over! You got a score of " + score + "!";
 }
 
 startButton.addEventListener("mouseup", startQuiz);

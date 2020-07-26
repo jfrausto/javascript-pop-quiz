@@ -68,7 +68,7 @@
         </div>
         <!-- 4 rows of answer choices -->
         <div class="row">
-          <div class="col my-auto">
+          <div class="col-sm my-auto">
             <p
               class="answer-item mx-auto p-2 rounded custom-border"
               id="answer1"
@@ -76,7 +76,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col my-auto">
+          <div class="col-sm my-auto">
             <p
               class="answer-item mx-auto p-2 rounded custom-border"
               id="answer2"
@@ -84,7 +84,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col my-auto">
+          <div class="col-sm my-auto">
             <p
               class="answer-item mx-auto p-2 rounded custom-border"
               id="answer3"
@@ -92,7 +92,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col my-auto">
+          <div class="col-sm my-auto">
             <p
               class="answer-item mx-auto p-2 rounded custom-border"
               id="answer4"
@@ -104,9 +104,59 @@
 
     <!-- game over splash pop-up -->
     <div class="position-fixed" id="overlay-background"></div>
-    <div class="position-fixed p-1 rounded custom-border" id="game-over">
-      LMAO
-    </div>
+    <section
+      class="container-fluid position-fixed p-2 rounded custom-border"
+      id="game-over"
+    >
+      <!-- game over score row -->
+      <div class="row mb-3">
+        <div class="col">
+          <span
+            id="game-over-score"
+            class="text-light bg-dark font-weight-bold px-3"
+          ></span>
+        </div>
+      </div>
+
+      <!-- WORKS, COMMENT OUT LINE 129 -->
+      <!-- <div class="row">
+        <div class="col">
+          <form class="form-inline">
+            <div class="form-group">
+              <span class="text-light bg-dark pl-1">Enter Name: </span>
+            </div>
+            <div class="form-group mx-sm-auto">
+              <label for="inputPassword2" class="sr-only">Password</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                id="userName"
+                placeholder="Your Name"
+              />
+            </div>
+            <button type="submit" class="btn btn-dark">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div> -->
+      <form>
+        <div class="form-group form-row">
+          <span class="text-light bg-dark col-sm-3 my-auto">Enter Name:</span>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control my-auto"
+              id="userName"
+              placeholder="Your Name"
+            />
+          </div>
+          <button type="button" class="btn btn-dark btn-sm col-sm-3">
+            Submit
+          </button>
+        </div>
+      </form>
+    </section>
 
     <!-- maybe include a footer minimalistic -->
     <footer></footer>

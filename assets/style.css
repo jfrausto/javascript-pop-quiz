@@ -52,7 +52,8 @@ footer {
   height: 40%;
 }
 .answer-item {
-  width: 50%;
+  width: 60%;
+  /* text-overflow: ; */
   height: 20%;
   font-size: 16px;
   cursor: pointer;
@@ -94,6 +95,10 @@ footer {
   box-shadow: 0px 2px 0px dodgerblue;
   z-index: 2;
 }
+
+/* .form-row {
+  font-size: 16px;
+} */
 
 #custom-header {
   display: block;
