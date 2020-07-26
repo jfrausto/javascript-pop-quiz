@@ -9,7 +9,12 @@ var answerOne = document.querySelector("#answer1");
 var answerTwo = document.querySelector("#answer2");
 var answerThree = document.querySelector("#answer3");
 var answerFour = document.querySelector("#answer4");
+var gameOverDisplay = document.querySelector("#game-over");
+var gameOverOverlay = document.querySelector("#overlay-background");
+gameOverDisplay.hidden = true;
+gameOverOverlay.hidden = true;
 
+var timerInterval; // make interval global
 var currentTime = 60; //    start with a minute on the clock
 var score = 0;
 var currentQuestion = 0; // keep adding to it to access others in the quiz Index
@@ -33,21 +38,26 @@ var selectHeaderQ = {
 
 var quizQuestionsArray = [dataTypeQ, selectHeaderQ];
 console.log(quizQuestionsArray[1]);
+
 scoreDisplay.hidden = true; //  hide score, timer, and q&a areas
 timerDisplay.hidden = true;
 questionDisplay.hidden = true;
 
-// scoreDisplay.hidden = false; //  hide score and timer areas
-// timerDisplay.hidden = false;
-// questionDisplay.hidden = false;
+// start or restarting quiz; reset all visible sections and variables
 function startQuiz(event) {
   event.preventDefault(); // maybe not work because of event passing
+  gameOverDisplay.hidden = true;
+  gameOverOverlay.hidden = true;
   titleDisplay.hidden = true;
   startButton.hidden = true;
-  score = 0;
+  score = 0; // reset score
+  currentTime = 60; //reset clock
+  currentQuestion = 0; // reset to start of quiz
+  // maybe include an array shuffle??? to randomize question order
   questionDisplay.hidden = false;
   scoreDisplay.textContent = "Score: " + score;
   scoreDisplay.hidden = false;
+  timerDisplay.textContent = "Time: " + currentTime;
   timerDisplay.hidden = false; // could be put in function instead
 
   setTime();
@@ -55,13 +65,14 @@ function startQuiz(event) {
 }
 
 function setTime() {
-  var timerInterval = setInterval(function () {
+  timerInterval = setInterval(function () {
     currentTime--;
     timerDisplay.textContent = "Time: " + currentTime;
 
     if (currentTime <= 0) {
       clearInterval(timerInterval);
       // "YOU LOSE" FUNCTION,CONDITION,OR ACTION HERE
+      gameOver();
     }
     if (currentTime <= 10) {
       timerDisplay.setAttribute("style", "box-shadow: 0px 5px 0px red");
@@ -71,6 +82,10 @@ function setTime() {
 
 // populates the question and answer fields
 function renderQuestion() {
+  // did we run out of questions? if so, game over.
+  if (currentQuestion >= quizQuestionsArray.length) {
+    gameOver();
+  }
   // reset all of the stylings from right/wrong answers and displays
   answerOne.removeAttribute("style");
   answerTwo.removeAttribute("style");
@@ -78,12 +93,39 @@ function renderQuestion() {
   answerFour.removeAttribute("style");
   scoreDisplay.removeAttribute("style");
   timerDisplay.removeAttribute("style");
+  // instead of rendering a question, check if we are done with questions
+  // to display game over, score, and final time, and
+
+  //reset to default 4 choices
+  answerOne.hidden = false;
+  answerTwo.hidden = false;
+  answerThree.hidden = false;
+  answerFour.hidden = false;
+
+  if (quizQuestionsArray[currentQuestion].answers.length < 4) {
+    //true of false question
+    answerThree.hidden = true;
+    answerFour.hidden = true;
+  }
+
   //   populate next question and its answer choices
   quizQuestion.textContent = quizQuestionsArray[currentQuestion].question;
-  answerOne.textContent = quizQuestionsArray[currentQuestion].answers[0];
-  answerTwo.textContent = quizQuestionsArray[currentQuestion].answers[1];
-  answerThree.textContent = quizQuestionsArray[currentQuestion].answers[2];
-  answerFour.textContent = quizQuestionsArray[currentQuestion].answers[3];
+  // need to make this dynamic and not hard coded
+  // answerOne.textContent = quizQuestionsArray[currentQuestion].answers[0];
+  // answerTwo.textContent = quizQuestionsArray[currentQuestion].answers[1];
+  // answerThree.textContent = quizQuestionsArray[currentQuestion].answers[2];
+  // answerFour.textContent = quizQuestionsArray[currentQuestion].answers[3];
+  // for (let i = 0; i < quizQuestionsArray[currentQuestion].answers.length ; i++) {
+  //   const element = quizQuestionsArray[currentQuestion].answers.length
+  // }
+
+  // go print list of answers for however many answers there are
+  // only <p> elements are the possible answer choices
+  var listOfAnswers = document.querySelectorAll("p");
+  for (var i = 0; i < quizQuestionsArray[currentQuestion].answers.length; i++) {
+    listOfAnswers[i].textContent =
+      quizQuestionsArray[currentQuestion].answers[i];
+  }
 }
 
 function verifyResponse(event) {
@@ -111,6 +153,12 @@ function verifyResponse(event) {
     currentQuestion++;
     timeOutID = window.setTimeout(renderQuestion, 600);
   }
+}
+
+function gameOver() {
+  gameOverOverlay.hidden = false; // display overlay and game over screen
+  gameOverDisplay.hidden = false;
+  clearInterval(timerInterval); // freeze time
 }
 
 startButton.addEventListener("mouseup", startQuiz);
