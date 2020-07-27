@@ -166,17 +166,20 @@ function verifyResponse(event) {
   ) {
     thisAnswer.setAttribute(
       "style",
-      "background-color: lightgreen; color:black"
+      "background-color: rgb(38, 187, 38); color:white"
     );
     score = score + 300;
     currentQuestion++; // go to next question
     scoreDisplay.textContent = "Score: " + score;
-    scoreDisplay.setAttribute("style", "box-shadow: 0px 5px 0px lightgreen");
+    scoreDisplay.setAttribute(
+      "style",
+      "box-shadow: 0px 5px 3px rgb(38, 187, 38)"
+    );
     timeOutID = window.setTimeout(renderQuestion, 600);
   } else {
     // wrong choice!
-    thisAnswer.setAttribute("style", "background-color: red; color:black");
-    timerDisplay.setAttribute("style", "box-shadow: 0px 5px 0px yellow");
+    thisAnswer.setAttribute("style", "background-color: red; color:white");
+    timerDisplay.setAttribute("style", "box-shadow: 0px 5px 3px yellow");
     currentTime = currentTime - 7; // penalty, you got it wrong!
     currentQuestion++;
     timeOutID = window.setTimeout(renderQuestion, 600);
