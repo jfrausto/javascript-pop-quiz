@@ -109,7 +109,7 @@
       id="game-over"
     >
       <!-- game over score row -->
-      <div class="row mb-3">
+      <div class="row mb-3" id="game-over-splash">
         <div class="col">
           <span
             id="game-over-score"
@@ -140,7 +140,9 @@
           </form>
         </div>
       </div> -->
-      <form>
+
+      <!-- enter name row -->
+      <form id="name-form">
         <div class="form-group form-row">
           <span class="text-light bg-dark col-sm-3 my-auto">Enter Name:</span>
           <div class="col-sm-6">
@@ -151,12 +153,26 @@
               placeholder="Your Name"
             />
           </div>
-          <button type="button" class="btn btn-dark btn-sm col-sm-3">
+          <button
+            type="button"
+            class="btn btn-sm btn-dark col-sm-3"
+            id="submit-btn"
+          >
             Submit
           </button>
         </div>
       </form>
+
+      <div class="row" id="score-list">
+        <div class="col">
+          <ul id="dynamic-list" class="mx-auto"></ul>
+        </div>
+      </div>
     </section>
+    <!-- <section class="container-fluid position-fixed p-2 rounded custom-border"
+    id="game-over">
+
+    </section> -->
 
     <!-- maybe include a footer minimalistic -->
     <footer></footer>

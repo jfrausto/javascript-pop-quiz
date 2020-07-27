@@ -12,15 +12,19 @@ var answerFour = document.querySelector("#answer4");
 var gameOverDisplay = document.querySelector("#game-over");
 var gameOverOverlay = document.querySelector("#overlay-background");
 var gameOverScore = document.querySelector("#game-over-score");
-
-gameOverDisplay.hidden = true;
-gameOverOverlay.hidden = true;
+var gameOverSplash = document.querySelector("#game-over-splash");
+var userNameForm = document.querySelector("#name-form");
+var userName = document.querySelector("#userName");
+var HighScoreList = document.querySelector("#score-list");
+var dynamicList = document.querySelector("#dynamic-list");
+var submitBtn = document.querySelector("#submit-btn");
 
 var timerInterval; // make interval global
 var currentTime = 60; //    start with a minute on the clock
 var score = 0;
 var currentQuestion = 0; // keep adding to it to access others in the quiz Index
 // var thisAnswer; event.target for chosen answer
+var scoreList = [];
 
 var dataTypeQ = {
   question: "Which of the following data types is NOT supported in JavaScript?",
@@ -37,13 +41,28 @@ var selectHeaderQ = {
   ],
   correctAnswer: "All of the above",
 };
-
-var quizQuestionsArray = [dataTypeQ, selectHeaderQ];
+var quizQuestionsArray = [dataTypeQ, selectHeaderQ]; // array!!!!
 console.log(quizQuestionsArray[1]);
 
 scoreDisplay.hidden = true; //  hide score, timer, and q&a areas
 timerDisplay.hidden = true;
 questionDisplay.hidden = true;
+gameOverDisplay.hidden = true; // hide all end screens
+gameOverOverlay.hidden = true;
+HighScoreList.hidden = true;
+
+init();
+
+function init() {
+  var storedScoreList = JSON.parse(localStorage.getItem("scoresList"));
+
+  if (storedScoreList !== null) {
+    scoreList = storedScoreList;
+  }
+
+  renderScoreList();
+  currentQuestion = 0;
+}
 
 // start or restarting quiz; reset all visible sections and variables
 function startQuiz(event) {
@@ -87,6 +106,7 @@ function renderQuestion() {
   // did we run out of questions? if so, game over.
   if (currentQuestion >= quizQuestionsArray.length) {
     gameOver();
+    return;
   }
   // reset all of the stylings from right/wrong answers and displays
   answerOne.removeAttribute("style");
@@ -164,8 +184,55 @@ function gameOver() {
   gameOverScore.textContent = "Game Over! You got a score of " + score + "!";
 }
 
+function storeScores() {
+  localStorage.setItem("scoresList", JSON.stringify(scoreList));
+}
+
+function renderScoreList() {
+  dynamicList.innerHTML = "";
+
+  for (var i = 0; i < scoreList.length; i++) {
+    var storedScores = scoreList[i];
+
+    var li = document.createElement("li");
+    li.textContent = scoreList[i].name + "--------" + scoreList[i].highScore;
+    dynamicList.appendChild(li);
+  }
+}
+
+// double submit capability
+function submitScores(event) {
+  event.preventDefault();
+  console.log("I have been submitted!");
+  var user = userName.value.trim();
+  console.log(user);
+
+  if (user === "") {
+    return;
+  }
+
+  var userScore = {
+    name: user,
+    highScore: score,
+  };
+  console.log(userScore);
+
+  scoreList.push(userScore);
+  console.log(scoreList);
+
+  // now display score list
+  storeScores();
+  userNameForm.hidden = true;
+  gameOverSplash.hidden = true;
+  HighScoreList.hidden = false;
+  renderScoreList();
+}
+
 startButton.addEventListener("mouseup", startQuiz);
 answerOne.addEventListener("click", verifyResponse);
 answerTwo.addEventListener("click", verifyResponse);
 answerThree.addEventListener("click", verifyResponse);
 answerFour.addEventListener("click", verifyResponse);
+
+submitBtn.addEventListener("click", submitScores);
+userNameForm.addEventListener("submit", submitScores);
