@@ -99,6 +99,10 @@ footer {
 /* .form-row {
   font-size: 16px;
 } */
+#game-over {
+  /* overflow-y: scroll; */
+  overflow: hidden;
+}
 
 #custom-header {
   display: block;

@@ -18,6 +18,9 @@ var userName = document.querySelector("#userName");
 var HighScoreList = document.querySelector("#score-list");
 var dynamicList = document.querySelector("#dynamic-list");
 var submitBtn = document.querySelector("#submit-btn");
+var letsGoAgain = document.querySelector("#go-again");
+var clearHighScores = document.querySelector("#clear-scores");
+var retakeQuiz = document.querySelector("#retake-quiz");
 
 var timerInterval; // make interval global
 var currentTime = 60; //    start with a minute on the clock
@@ -50,6 +53,7 @@ questionDisplay.hidden = true;
 gameOverDisplay.hidden = true; // hide all end screens
 gameOverOverlay.hidden = true;
 HighScoreList.hidden = true;
+letsGoAgain.hidden = true;
 
 init();
 
@@ -69,6 +73,7 @@ function startQuiz(event) {
   event.preventDefault(); // maybe not work because of event passing
   gameOverDisplay.hidden = true;
   gameOverOverlay.hidden = true;
+  gameOverSplash.hidden = true;
   titleDisplay.hidden = true;
   startButton.hidden = true;
   score = 0; // reset score
@@ -151,6 +156,7 @@ function renderQuestion() {
 }
 
 function verifyResponse(event) {
+  event.preventDefault();
   var thisAnswer = event.target;
   var timeOutId = 0;
 
@@ -180,6 +186,9 @@ function verifyResponse(event) {
 function gameOver() {
   gameOverOverlay.hidden = false; // display overlay and game over screen
   gameOverDisplay.hidden = false;
+  gameOverSplash.hidden = false;
+  userNameForm.hidden = false;
+
   clearInterval(timerInterval); // freeze time
   gameOverScore.textContent = "Game Over! You got a score of " + score + "!";
 }
@@ -205,6 +214,7 @@ function submitScores(event) {
   event.preventDefault();
   console.log("I have been submitted!");
   var user = userName.value.trim();
+  userName.value = "";
   console.log(user);
 
   if (user === "") {
@@ -225,7 +235,16 @@ function submitScores(event) {
   userNameForm.hidden = true;
   gameOverSplash.hidden = true;
   HighScoreList.hidden = false;
+  letsGoAgain.hidden = false;
   renderScoreList();
+}
+
+function clearScores(event) {
+  // need to clear local storage too
+  event.preventDefault();
+  dynamicList.innerHTML = "";
+  localStorage.clear();
+  scoreList = [];
 }
 
 startButton.addEventListener("mouseup", startQuiz);
@@ -236,3 +255,5 @@ answerFour.addEventListener("click", verifyResponse);
 
 submitBtn.addEventListener("click", submitScores);
 userNameForm.addEventListener("submit", submitScores);
+clearHighScores.addEventListener("mouseup", clearScores);
+retakeQuiz.addEventListener("mouseup", startQuiz);

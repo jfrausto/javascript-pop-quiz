@@ -113,7 +113,7 @@
         <div class="col">
           <span
             id="game-over-score"
-            class="text-light bg-dark font-weight-bold px-3"
+            class="text-light bg-dark font-weight-bold px-3 rounded"
           ></span>
         </div>
       </div>
@@ -144,7 +144,9 @@
       <!-- enter name row -->
       <form id="name-form">
         <div class="form-group form-row">
-          <span class="text-light bg-dark col-sm-3 my-auto">Enter Name:</span>
+          <span class="text-light bg-dark col-sm-3 my-auto rounded"
+            >Enter Name:</span
+          >
           <div class="col-sm-6">
             <input
               type="text"
@@ -163,9 +165,23 @@
         </div>
       </form>
 
+      <!-- scores list! -->
       <div class="row" id="score-list">
         <div class="col">
           <ul id="dynamic-list" class="mx-auto"></ul>
+        </div>
+      </div>
+
+      <div class="row" id="go-again">
+        <div class="col-sm-6 my-auto">
+          <span class="rounded custom-border p-1" id="clear-scores">
+            clear high scores
+          </span>
+        </div>
+        <div class="col-sm-6 my-auto">
+          <span class="rounded custom-border p-1" id="retake-quiz">
+            retake quiz
+          </span>
         </div>
       </div>
     </section>
