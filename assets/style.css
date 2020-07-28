@@ -38,7 +38,7 @@ footer {
 }
 #start-button:active {
   /* box-shadow: 0 1px 0 dodgerblue; */
-  box-shadow: 0px 1px 5px dodgerblue;
+  box-shadow: 1px 1px 5px dodgerblue;
   /* top: 3px; */
   transform: translateY(3px);
 }
@@ -71,7 +71,7 @@ footer {
   transform: translateY(3px);
 }
 #custom-timer {
-  box-shadow: 0px 5px 2px rgb(38, 187, 38);
+  box-shadow: 0px 5px 2px rgb(104, 226, 56);
 }
 /* 
 #custom-score {
@@ -94,7 +94,7 @@ footer {
   height: 90%;
   display: block;
   text-align: center;
-  box-shadow: 0px 2px 0px dodgerblue;
+  box-shadow: 0px 5px 1px dodgerblue;
   z-index: 2;
 }
 
@@ -104,6 +104,10 @@ footer {
 #game-over {
   /* overflow-y: scroll; */
   overflow: hidden;
+}
+.dashedLine {
+  border: 4px dashed black;
+  border-radius: 3px;
 }
 /* #go-again {
   position: absolute;
@@ -127,21 +131,21 @@ footer {
 }
 
 #retake-quiz {
-  box-shadow: 0px 5px 0px rgb(38, 187, 38);
+  box-shadow: 0px 5px 0px rgb(104, 226, 56);
   cursor: pointer;
   position: relative;
   top: 0px;
   transition: all ease 0.1s;
 }
 #retake-quiz:hover {
-  background-color: rgb(38, 187, 38);
+  background-color: rgb(104, 226, 56);
   color: white;
 }
 #retake-quiz:active {
   /* transform: translateY(3px);
    */
   top: 3px;
-  box-shadow: 0px 2px 3px rgb(38, 187, 38);
+  box-shadow: 0px 2px 3px rgb(104, 226, 56);
 }
 
 #custom-header {

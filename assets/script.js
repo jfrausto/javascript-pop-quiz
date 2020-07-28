@@ -101,7 +101,7 @@ function setTime() {
       gameOver();
     }
     if (currentTime <= 10) {
-      timerDisplay.setAttribute("style", "box-shadow: 0px 5px 0px red");
+      timerDisplay.setAttribute("style", "box-shadow: 0px 5px 2px red");
     }
   }, 1000);
 }
@@ -166,14 +166,14 @@ function verifyResponse(event) {
   ) {
     thisAnswer.setAttribute(
       "style",
-      "background-color: rgb(38, 187, 38); color:white"
+      "background-color: rgb(104, 226, 56); color:white"
     );
     score = score + 300;
     currentQuestion++; // go to next question
     scoreDisplay.textContent = "Score: " + score;
     scoreDisplay.setAttribute(
       "style",
-      "box-shadow: 0px 5px 3px rgb(38, 187, 38)"
+      "box-shadow: 0px 5px 3px rgb(104, 226, 56)"
     );
     timeOutID = window.setTimeout(renderQuestion, 600);
   } else {
@@ -191,6 +191,10 @@ function gameOver() {
   gameOverDisplay.hidden = false;
   gameOverSplash.hidden = false;
   userNameForm.hidden = false;
+  clearHighScores.hidden = false;
+  retakeQuiz.hidden = false;
+  letsGoAgain.hidden = false;
+  HighScoreList.hidden = false;
 
   clearInterval(timerInterval); // freeze time
   gameOverScore.textContent = "Game Over! You got a score of " + score + "!";
