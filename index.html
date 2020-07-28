@@ -17,36 +17,36 @@
     <!-- top of page; header -->
     <header class="container-fluid mb-2 mt-2 p-2">
       <div class="row mx-auto">
-        <!-- this div can hold the timer -->
+        <!-- timer section -->
         <div
           class="col-auto my-auto mr-auto ml-1 rounded custom-border"
           id="custom-timer"
         >
           Time: 60
         </div>
-        <!-- this div can hold the starting header -->
+        <!-- main title at start -->
         <div class="col-sm-8 my-auto mx-auto rounded" id="custom-header">
-          <h1>Test your JavaScript knowledge</h1>
+          <h1 class="noselect">Test your JavaScript knowledge</h1>
         </div>
-        <!-- this div can hold the score -->
+        <!-- score display section -->
         <div
           class="col-auto my-auto mr-1 ml-3 rounded custom-border"
           id="custom-score"
         >
-          Score:
+          Score: 000
         </div>
       </div>
     </header>
 
-    <!-- middle main of page -->
+    <!-- main; holds the start quiz section and Q&A display -->
     <main>
       <div class="container-fluid mt-2 px-2 pt-2">
-        <!-- THIS ROW HOLDS THE START BUTTON -->
+        <!-- start button row -->
         <!-- will hide upon starting the quiz -->
         <div class="row mx-auto rounded">
           <div class="col my-auto rounded">
             <button
-              class="rounded mx-auto custom-border button"
+              class="rounded mx-auto custom-border button noselect"
               id="start-button"
               type="button"
             >
@@ -57,19 +57,17 @@
       </div>
 
       <!-- Question Display -->
-      <!-- maybe make container fluid, if problems -->
       <div class="container px-2" id="question-display">
         <div class="row mx-auto rounded mb-3">
           <div class="col my-auto rounded">
             <h2
               class="rounded noselect mx-auto p-2 custom-border"
               id="quiz-question"
-            >
-              HOW CAN SHE SLAP?
-            </h2>
+            ></h2>
           </div>
         </div>
         <!-- 4 rows of answer choices -->
+        <!-- to be populated -->
         <div class="row">
           <div class="col-sm my-auto">
             <p
@@ -105,8 +103,9 @@
       </div>
     </main>
 
-    <!-- game over splash pop-up -->
+    <!-- transparent black background -->
     <div class="position-absolute" id="overlay-background"></div>
+    <!-- game over pop up section of the application -->
     <section
       class="container-fluid position-absolute p-2 rounded custom-border"
       id="game-over"
@@ -116,38 +115,15 @@
         <div class="col">
           <span
             id="game-over-score"
-            class="text-light bg-dark font-weight-bold px-3 rounded"
+            class="custom-border px-2 color-change-score"
           ></span>
         </div>
       </div>
 
-      <!-- WORKS, COMMENT OUT LINE 129 -->
-      <!-- <div class="row">
-        <div class="col">
-          <form class="form-inline">
-            <div class="form-group">
-              <span class="text-light bg-dark pl-1">Enter Name: </span>
-            </div>
-            <div class="form-group mx-sm-auto">
-              <label for="inputPassword2" class="sr-only">Password</label>
-              <input
-                type="text"
-                class="form-control form-control-sm"
-                id="userName"
-                placeholder="Your Name"
-              />
-            </div>
-            <button type="submit" class="btn btn-dark">
-              Submit
-            </button>
-          </form>
-        </div>
-      </div> -->
-
       <!-- enter name row -->
       <form id="name-form">
         <div class="form-group form-row">
-          <span class="text-light bg-dark col-sm-3 my-auto rounded"
+          <span class="custom-border col-sm-3 my-auto rounded"
             >Enter Name:</span
           >
           <div class="col-sm-6">
@@ -160,7 +136,7 @@
           </div>
           <button
             type="button"
-            class="btn btn-sm btn-dark col-sm-3"
+            class="custom-border rounded col-sm-3 p-1"
             id="submit-btn"
           >
             Submit
@@ -172,11 +148,12 @@
       <div class="row" id="score-list">
         <div class="col">
           <hr class="dashedLine mt-0 rounded" />
-
-          <ul id="dynamic-list" class="mx-auto"></ul>
+          <span class="mx-auto color-change">user -- // -- score</span>
+          <ul id="dynamic-list" class="mx-auto underOverLine"></ul>
         </div>
       </div>
 
+      <!-- row of buttons; clear scores and retake quiz -->
       <div class="row" id="go-again">
         <div class="col-sm-6 my-3 px-0">
           <span
@@ -196,13 +173,16 @@
         </div>
       </div>
     </section>
-    <!-- <section class="container-fluid position-fixed p-2 rounded custom-border"
-    id="game-over">
 
-    </section> -->
-
-    <!-- maybe include a footer minimalistic -->
-    <footer></footer>
+    <!--footer holds the instructions; possible score list bypass -->
+    <footer class="container-fluid mt-4" id="footer">
+      <div class="row">
+        <div class="col-sm-12 text-center instructions">
+          Answer as many questions until the timer expires.<br />
+          Each wrong answer will subtract some time!
+        </div>
+      </div>
+    </footer>
 
     <script src="./assets/script.js"></script>
   </body>

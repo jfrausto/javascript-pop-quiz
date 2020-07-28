@@ -21,6 +21,7 @@ var submitBtn = document.querySelector("#submit-btn");
 var letsGoAgain = document.querySelector("#go-again");
 var clearHighScores = document.querySelector("#clear-scores");
 var retakeQuiz = document.querySelector("#retake-quiz");
+var footer = document.querySelector("#footer");
 
 var timerInterval; // make interval global
 var currentTime = 60; //    start with a minute on the clock
@@ -30,21 +31,42 @@ var currentQuestion = 0; // keep adding to it to access others in the quiz Index
 var scoreList = [];
 
 var dataTypeQ = {
-  question: "Which of the following data types is NOT supported in JavaScript?",
-  answers: ["boolean", "number", "bit", "string"],
-  correctAnswer: "bit",
+  question: "Which of the following data types is NOT a JavaScript data type?",
+  answers: ["Boolean", "Null", "Empty", "String"],
+  correctAnswer: "Empty",
 };
-var selectHeaderQ = {
+var concatenateQ = {
   question: "Which is a valid way to concatenate an empty string? result = '';",
   answers: [
-    "result = result + someOtherString;",
-    "result += someOtherString;",
-    "result = result.concat( someOtherString);",
+    "result = result + someString;",
+    "result += someString;",
+    "result = result.concat(someString);",
     "All of the above",
   ],
   correctAnswer: "All of the above",
 };
-var quizQuestionsArray = [dataTypeQ, selectHeaderQ]; // array!!!!
+var preventQ = {
+  question:
+    "Which function should we call after a submit event to prevent data loss?",
+  answers: [
+    "event.onLoad();",
+    "event.preventDefault();",
+    "event.preventRefresh();",
+    "event.stopLoad();",
+  ],
+  correctAnswer: "event.preventDefault();",
+};
+var functionAsQ = {
+  question: "JavaScript can function as WHAT type of language?",
+  answers: [
+    "Procedural",
+    "Declarative",
+    "Object Oriented",
+    "Both Procedural and Object Oriented",
+  ],
+  correctAnswer: "Both Procedural and Object Oriented",
+};
+var quizQuestionsArray = [dataTypeQ, concatenateQ, preventQ, functionAsQ]; // array!!!!
 console.log(quizQuestionsArray[1]);
 
 scoreDisplay.hidden = true; //  hide score, timer, and q&a areas
@@ -71,17 +93,16 @@ function init() {
 // start or restarting quiz; reset all visible sections and variables
 function startQuiz(event) {
   event.preventDefault(); // maybe not work because of event passing
-  gameOverDisplay.hidden = true;
-  gameOverOverlay.hidden = true;
+  footer.hidden = true;
   gameOverSplash.hidden = true;
   titleDisplay.hidden = true;
   startButton.hidden = true;
-  score = 0; // reset score
+  score = 000; // reset score
   currentTime = 60; //reset clock
   currentQuestion = 0; // reset to start of quiz
   // maybe include an array shuffle??? to randomize question order
   questionDisplay.hidden = false;
-  scoreDisplay.textContent = "Score: " + score;
+  scoreDisplay.textContent = "Score: 00" + score;
   scoreDisplay.hidden = false;
   timerDisplay.textContent = "Time: " + currentTime;
   timerDisplay.hidden = false; // could be put in function instead
@@ -214,7 +235,7 @@ function renderScoreList() {
     var storedScores = scoreList[i];
 
     var li = document.createElement("li");
-    li.textContent = scoreList[i].name + "--------" + scoreList[i].highScore;
+    li.textContent = scoreList[i].name + " -- // -- " + scoreList[i].highScore;
     dynamicList.appendChild(li);
   }
 }
@@ -266,4 +287,14 @@ answerFour.addEventListener("click", verifyResponse);
 submitBtn.addEventListener("click", submitScores);
 userNameForm.addEventListener("submit", submitScores);
 clearHighScores.addEventListener("mouseup", clearScores);
-retakeQuiz.addEventListener("mouseup", startQuiz);
+retakeQuiz.addEventListener("mouseup", function (event) {
+  event.preventDefault();
+  gameOverDisplay.hidden = true;
+  gameOverOverlay.hidden = true;
+  questionDisplay.hidden = true;
+  scoreDisplay.hidden = true;
+  timerDisplay.hidden = true;
+  footer.hidden = false;
+  titleDisplay.hidden = false;
+  startButton.hidden = false;
+});
