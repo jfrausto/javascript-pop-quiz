@@ -39,7 +39,7 @@ var selectHeaderQ = {
   answers: [
     "result = result + someOtherString;",
     "result += someOtherString;",
-    "result = result.concat(someOtherString);",
+    "result = result.concat( someOtherString);",
     "All of the above",
   ],
   correctAnswer: "All of the above",
@@ -166,7 +166,7 @@ function verifyResponse(event) {
   ) {
     thisAnswer.setAttribute(
       "style",
-      "background-color: rgb(104, 226, 56); color:white"
+      "background-color: rgb(104, 226, 56); color: white; box-shadow: 0px 5px 2px rgb(104, 226, 56);pointer-events:none"
     );
     score = score + 300;
     currentQuestion++; // go to next question
@@ -178,7 +178,10 @@ function verifyResponse(event) {
     timeOutID = window.setTimeout(renderQuestion, 600);
   } else {
     // wrong choice!
-    thisAnswer.setAttribute("style", "background-color: red; color:white");
+    thisAnswer.setAttribute(
+      "style",
+      "background-color: red; color: white; box-shadow: 0px 5px 2px red;pointer-events:none"
+    );
     timerDisplay.setAttribute("style", "box-shadow: 0px 5px 3px yellow");
     currentTime = currentTime - 7; // penalty, you got it wrong!
     currentQuestion++;
