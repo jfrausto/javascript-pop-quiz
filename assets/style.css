@@ -1,12 +1,10 @@
 body {
   background-color: white;
-  /* margin: 0.5rem; */
   font-family: "Courier New", Courier, monospace;
 }
-header,
-main,
-footer {
+.custom-border {
   background-color: white;
+  border: 1px solid black;
 }
 .button {
   position: absolute;
@@ -15,13 +13,10 @@ footer {
   display: block;
   width: 50%;
   height: 25%;
-  /* border: black; */
   text-align: center;
   font-size: 48px;
   font-weight: 800;
   background-color: white;
-  /* box-shadow: 0 5px 0 dodgerblue; 
-  */
   /* GOT IDEA FROM STACK OVERFLOW BUTTON ANIMATION */
   box-shadow: 0px 5px 0px black;
   position: relative;
@@ -32,26 +27,19 @@ footer {
   cursor: pointer;
   background-color: dodgerblue;
   color: white;
-  /* box-shadow: 0px 3px 2px dodgerblue; */
 }
 #start-button:focus {
   outline: none;
 }
 #start-button:active {
-  /* box-shadow: 0 1px 0 dodgerblue; */
   box-shadow: 0px 2px 3px black;
-  /* top: 3px; */
   transform: translateY(3px);
 }
-
-/* MIGHT MAKE A CLASS TO HANDLE BORDERS WITH STYLE */
+.instructions {
+  font-size: 16px;
+}
 #custom-score {
   box-shadow: 0px 5px 0px black;
-}
-
-.custom-border {
-  background-color: white;
-  border: 1px solid black;
 }
 .question-item {
   width: 70%;
@@ -79,11 +67,6 @@ footer {
 #custom-timer {
   box-shadow: 0px 5px 2px rgb(104, 226, 56);
 }
-/* 
-#custom-score {
-  background-color: white;
-  border: 2px solid black;
-} */
 #overlay-background {
   top: 0%;
   left: 0%;
@@ -100,41 +83,35 @@ footer {
   height: 90%;
   display: block;
   text-align: center;
-  /* box-shadow: 5px 5px 0px black; */
   z-index: 2;
 }
 
 /* got this from stack overflow
 https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-changing-background-like-kahoot-it-has */
 .color-change {
-  animation: 3000ms ease-in-out infinite color-change;
+  animation: 4000ms ease-in-out infinite color-change;
 }
 @keyframes color-change {
   0% {
-    text-decoration: underline overline dodgerblue;
+    text-decoration: underline overline goldenrod;
   }
   20% {
-    text-decoration: underline overline gold;
+    text-decoration: underline overline orangered;
   }
   40% {
-    text-decoration: underline overline red;
+    text-decoration: underline overline goldenrod;
   }
   60% {
-    text-decoration: underline overline violet;
+    text-decoration: underline overline orangered;
   }
   80% {
-    text-decoration: underline overline green;
+    text-decoration: underline overline red;
   }
   100% {
-    text-decoration: underline overline dodgerblue;
+    text-decoration: underline overline goldenrod;
   }
 }
-
-/* .form-row {
-  font-size: 16px;
-} */
 #game-over {
-  /* overflow-y: scroll; */
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -142,9 +119,6 @@ https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-ch
   border: 4px dashed black;
   border-radius: 3px;
 }
-/* #go-again {
-  position: absolute;
-} */
 #clear-scores {
   box-shadow: 0px 5px 0px red;
   cursor: pointer;
@@ -157,12 +131,9 @@ https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-ch
   color: white;
 }
 #clear-scores:active {
-  /* transform: translateY(3px);
-   */
   top: 3px;
   box-shadow: 0px 2px 3px red;
 }
-
 #retake-quiz {
   box-shadow: 0px 5px 0px rgb(104, 226, 56);
   cursor: pointer;
@@ -175,12 +146,9 @@ https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-ch
   color: white;
 }
 #retake-quiz:active {
-  /* transform: translateY(3px);
-   */
   top: 3px;
   box-shadow: 0px 2px 3px rgb(104, 226, 56);
 }
-
 #custom-header {
   display: block;
   background-color: white;
@@ -200,13 +168,13 @@ https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-ch
     color: white;
   }
   20% {
-    color: gold;
+    color: goldenrod;
   }
   40% {
     color: orangered;
   }
   60% {
-    color: yellow;
+    color: goldenrod;
   }
   80% {
     color: orangered;
@@ -215,7 +183,6 @@ https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-ch
     color: white;
   }
 }
-
 #submit-btn {
   box-shadow: 0px 5px 0px black;
   cursor: pointer;
@@ -230,14 +197,11 @@ https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-ch
   top: 3px;
   box-shadow: 0px 2px 3px black;
 }
-
-.instructions {
-  font-size: 16px;
-}
 #dynamic-list {
   font-size: 18px;
 }
 
+/* cannot highlight text with this CSS */
 /* from stack overflow: https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
