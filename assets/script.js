@@ -65,8 +65,40 @@ var functionAsQ = {
   ],
   correctAnswer: "Both Procedural and Object Oriented",
 };
+var stringAndNumQ = {
+  question:
+    "What will console.log(x) output to the console? var x = 5 + 4 + '1'",
+  answers: ["'91'", "'541'", "10", "'10'"],
+  correctAnswer: "'91'",
+};
+var randomNumQ = {
+  question:
+    "Which expression would give you a random number between 0 and 9 inclusive only?",
+  answers: [
+    "Math.floor(Math.random() * 9)",
+    "Math.floor(Math.random() * 5)",
+    "Math.floor(Math.random() * 10)",
+    "Math.floor(Math.random() * 100)",
+  ],
+  correctAnswer: "Math.floor(Math.random() * 10)",
+};
+var debugQ = {
+  question:
+    "Which expression is the most useful, least intrusive debugging tool?",
+  answers: ["alert(x);", "confirm(x);", "prompt(x);", "console.log(x);"],
+  correctAnswer: "console.log(x);",
+};
+
 // array containing the question objects
-var quizQuestionsArray = [dataTypeQ, concatenateQ, preventQ, functionAsQ]; // array!!!!
+var quizQuestionsArray = [
+  dataTypeQ,
+  concatenateQ,
+  preventQ,
+  functionAsQ,
+  stringAndNumQ,
+  randomNumQ,
+  debugQ,
+]; // array!!!!
 
 // setting display visibility
 scoreDisplay.hidden = true; //  hide score, timer, and q&a areas

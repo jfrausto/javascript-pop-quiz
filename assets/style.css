@@ -9,6 +9,14 @@ body {
 .button {
   position: absolute;
 }
+/* start page styling */
+#custom-header {
+  display: block;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  box-shadow: 0px 5px 0px black;
+}
 #start-button {
   display: block;
   width: 50%;
@@ -38,6 +46,10 @@ body {
 .instructions {
   font-size: 16px;
 }
+/* question display stylings */
+#custom-timer {
+  box-shadow: 0px 5px 2px rgb(104, 226, 56);
+}
 #custom-score {
   box-shadow: 0px 5px 0px black;
 }
@@ -64,9 +76,7 @@ body {
   transform: translateY(3px);
   box-shadow: 0px 2px 3px black;
 }
-#custom-timer {
-  box-shadow: 0px 5px 2px rgb(104, 226, 56);
-}
+/* game over stylings */
 #overlay-background {
   top: 0%;
   left: 0%;
@@ -87,6 +97,7 @@ body {
 }
 
 /* got this from stack overflow
+  change colors of user // score final display
 https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-changing-background-like-kahoot-it-has */
 .color-change {
   animation: 4000ms ease-in-out infinite color-change;
@@ -111,9 +122,24 @@ https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-ch
     text-decoration: underline overline goldenrod;
   }
 }
+/* make a scroll bar for extra entries */
 #game-over {
   overflow-y: auto;
   overflow-x: hidden;
+}
+#submit-btn {
+  box-shadow: 0px 5px 0px black;
+  cursor: pointer;
+  position: relative;
+  top: 0px;
+  transition: all ease 0.1s;
+}
+#submit-btn:focus {
+  outline: none;
+}
+#submit-btn:active {
+  top: 3px;
+  box-shadow: 0px 2px 3px black;
 }
 .dashedLine {
   border: 4px dashed black;
@@ -149,14 +175,7 @@ https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-ch
   top: 3px;
   box-shadow: 0px 2px 3px rgb(104, 226, 56);
 }
-#custom-header {
-  display: block;
-  background-color: white;
-  border: 1px solid black;
-  text-align: center;
-  box-shadow: 0px 5px 0px black;
-}
-
+/* color changing final score display */
 .color-change-score {
   animation: 4000ms ease-in-out infinite color-change-score;
   background-color: black;
@@ -182,20 +201,6 @@ https://stackoverflow.com/questions/43371912/how-to-make-an-html-css-js-color-ch
   100% {
     color: white;
   }
-}
-#submit-btn {
-  box-shadow: 0px 5px 0px black;
-  cursor: pointer;
-  position: relative;
-  top: 0px;
-  transition: all ease 0.1s;
-}
-#submit-btn:focus {
-  outline: none;
-}
-#submit-btn:active {
-  top: 3px;
-  box-shadow: 0px 2px 3px black;
 }
 #dynamic-list {
   font-size: 18px;
