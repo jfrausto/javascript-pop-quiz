@@ -88,6 +88,11 @@ var debugQ = {
   answers: ["alert(x);", "confirm(x);", "prompt(x);", "console.log(x);"],
   correctAnswer: "console.log(x);",
 };
+var booleanDataQ = {
+  question: "What data type does var x represent? x = true",
+  answers: ["String", "Bit", "Boolean", "Object"],
+  correctAnswer: "Boolean",
+};
 
 // array containing the question objects
 var quizQuestionsArray = [
@@ -98,6 +103,7 @@ var quizQuestionsArray = [
   stringAndNumQ,
   randomNumQ,
   debugQ,
+  booleanDataQ,
 ]; // array!!!!
 
 // setting display visibility

@@ -14,3 +14,8 @@ After the user reaches the end of the quiz, or the time is up, a game over pop-u
 ![The Game Over pop-up](/assets/screenshots/pop_quiz_gameover.PNG?raw=true "Game over and previous scores")
 
 This application was completed with help from Javascript and its event listeners that trigger functions handling CSS events and DOM manipulation.
+
+### Links
+
+- [Repository](https://github.com/jfrausto/javascript-pop-quiz)
+- [GitHub Page](https://jfrausto.github.io/javascript-pop-quiz/)
